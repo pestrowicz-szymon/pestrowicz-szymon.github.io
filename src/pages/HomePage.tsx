@@ -7,114 +7,41 @@ function HomePage() {
     const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+    <main className="flex-1 snap-y snap-mandatory h-screen overflow-y-auto scroll-smooth bg-slate-950 text-slate-100">
+      
+      {/* 1. SEKCJA: HERO / O MNIE */}
+      <section 
+        id="about" 
+        className="snap-start snap-always min-h-screen w-full flex flex-col justify-center items-center px-6 py-16"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris sapien, pretium vel nisl id, posuere sollicitudin purus. Aenean imperdiet nulla mi, non lobortis est iaculis ac. Nulla posuere odio arcu, id elementum tellus fringilla id. Nunc eget dui quis massa fermentum bibendum sit amet eu libero. Nam sed nisl et quam semper rhoncus sed eu ante. Donec eu mauris sit amet nisl blandit vehicula. Etiam eu orci eget libero pellentesque auctor. Aliquam finibus hendrerit purus non ultricies.
       </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+      {/* 2. SEKCJA: EDUKACJA */}
+      <section 
+        id="education" 
+        className="snap-start snap-always min-h-screen w-full flex flex-col justify-center items-center px-6 py-16"
+      >
+        Donec gravida ac ipsum in finibus. Etiam venenatis ultrices nisi, placerat porta leo venenatis ut. Fusce sit amet dui vitae dui cursus dictum in eu justo. Integer eget nisi dui. Praesent fringilla varius luctus. Curabitur viverra consequat erat eget finibus. Nulla ut fringilla enim. Duis vel neque velit. Vestibulum auctor diam eu tortor rutrum gravida. Vestibulum scelerisque diam et risus finibus, a pharetra enim rhoncus. Nullam a elementum quam, ac consequat est. Pellentesque interdum felis a leo lobortis, sit amet auctor lacus hendrerit. Cras viverra lacus at rhoncus tristique. Curabitur viverra ut ex ut vestibulum.
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      {/* 3. SEKCJA: DOŚWIADCZENIE */}
+      <section 
+        id="experience" 
+        className="snap-start snap-always min-h-screen w-full flex flex-col justify-center items-center px-6 py-16"
+      >
+        Phasellus ac porttitor libero. Sed ac convallis lacus. Donec eget turpis tellus. Fusce nec sem ut nibh tristique lobortis. Phasellus vitae dapibus nulla. Morbi ullamcorper ullamcorper ipsum, ac ornare nisi pretium eu. Fusce vehicula sagittis malesuada. Aenean maximus ultrices orci fermentum viverra. Integer ultrices risus lacus, sit amet commodo ex posuere a. Etiam pretium malesuada tortor, eu congue sapien efficitur at. Sed efficitur, neque faucibus luctus ultrices, velit ipsum accumsan tortor, nec porta odio tortor sit amet leo. Sed sagittis bibendum lorem et vulputate. Nam fringilla iaculis ligula, et sodales leo hendrerit sed.
+      </section>
+
+      {/* 4. SEKCJA: PROJEKTY */}
+      <section 
+        id="projects" 
+        className="snap-start snap-always min-h-screen w-full flex flex-col justify-center items-center px-6 py-16"
+      >
+        Pellentesque sagittis eros et faucibus sagittis. Integer semper nibh non sem malesuada, sed porta quam congue. Fusce molestie lacus vitae velit varius, sit amet molestie sapien aliquam. Nulla varius eu elit sed pellentesque. Maecenas sed arcu turpis. Vivamus ullamcorper accumsan risus. Phasellus gravida blandit tincidunt. Fusce non nunc ac quam posuere maximus. Vestibulum ullamcorper vitae tortor eu viverra.
+      </section>
+
+    </main>
   )
 }
 

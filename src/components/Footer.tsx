@@ -3,7 +3,7 @@ function Footer() {
 
 
     return (
-        <footer className="w-full py-8 bg-slate-950 text-slate-400 border-t border-slate-900">
+        <footer className="w-full flex-none flex py-8 bg-slate-950/80 text-slate-400 border-t border-slate-900 backdrop-blur-md">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 max-w-6xl mx-auto px-4 text-sm">
         
             <p>© {currentYear} Szymon Pestrowicz</p>
@@ -41,7 +41,7 @@ function Footer() {
             <a
                 href="mailto:twoj-email@domain.com"
                 aria-label="Email"
-                className="text-white hover:text-teal-400 transition-colors"
+                className="text-whitehover:text-teal-400 transition-colors"
             >
                 <svg className="w-5 h-5">
                     <use href="/icons.svg#mail-icon" />
