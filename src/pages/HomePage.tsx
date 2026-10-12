@@ -1,8 +1,6 @@
-import { useState } from 'react'
 
 function HomePage() {
-    const [count, setCount] = useState(0)
-
+    
   return (
     <main className="flex-1 snap-y snap-mandatory h-screen overflow-y-auto scroll-smooth bg-slate-950 text-slate-100">
       
