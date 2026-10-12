@@ -5,14 +5,9 @@ import Navbar from './components/Navbar'
 function App() {
 
   return (
-    <div className="flex flex-col h-screen w-full overflow-hidden bg-slate-950">
-      {/* 1. Nawigacja na samej górze */}
+    <div className="flex flex-col h-dvh w-full overflow-hidden bg-slate-950">
       <Navbar />
-
-      {/* 2. Przewijany obszar sekcji */}
       <HomePage />
-
-      {/* 3. Statyczny Footer na dole */}
       <Footer />
     </div>
   )
