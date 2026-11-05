@@ -7,14 +7,16 @@ interface Project {
   category: string;
   description: string[];
   technologies: string[];
+  link: string;
+  linkType?: 'github' | 'playstore' | 'external';
 }
 
-// Podkomponent karty o SZTYWNEJ WYSOKOŚCI (h-[440px] sm:h-[380px])
+// Podkomponent karty o sztywnej wysokości z dynamicznym linkiem
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="p-5 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between w-full h-[440px] sm:h-[380px]">
       
-      {/* 1. Nagłówek Karty: Stała przestrzeń na tytuł i link GitHub */}
+      {/* 1. Nagłówek Karty: Tytuł oraz dedykowany przycisk z linkiem */}
       <div className="flex items-start justify-between gap-4 border-b border-slate-800/60 pb-3 sm:pb-4 shrink-0 min-h-[68px] sm:min-h-[80px]">
         <div className="flex-1">
           <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight leading-snug">
@@ -25,20 +27,30 @@ function ProjectCard({ project }: { project: Project }) {
           </p>
         </div>
 
+        {/* Dedykowane łącze dla konkretnego projektu */}
         <a 
-          href="https://github.com/pestrowicz-szymon" 
+          href={project.link} 
           target="_blank" 
           rel="noreferrer" 
-          className="p-2 sm:p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all shrink-0"
-          aria-label="View Source Code"
+          className="p-2 sm:p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all shrink-0 flex items-center justify-center"
+          aria-label={`Open ${project.title}`}
+          title={project.linkType === 'playstore' ? 'View on Google Play Store' : 'View Source Code'}
         >
-          <svg className="w-5 h-5 fill-current">
-            <use href="/icons.svg#github-icon" />
-          </svg>
+          {project.linkType === 'playstore' ? (
+            /* Ikona Google Play Store / External */
+            <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          ) : (
+            /* Ikona GitHub */
+            <svg className="w-5 h-5 fill-current">
+              <use href="/icons.svg#github-icon" />
+            </svg>
+          )}
         </a>
       </div>
 
-      {/* 2. Środek: Opis projektu (flex-1 z wyśrodkowaniem w pionie, gdy jest 1 punkt) */}
+      {/* 2. Środek: Opis projektu */}
       <div className="flex-1 flex flex-col justify-center py-3 sm:py-4">
         <ul className="flex flex-col gap-2 sm:gap-2.5 text-slate-300 text-xs sm:text-sm leading-relaxed">
           {project.description.map((item, idx) => (
@@ -50,7 +62,7 @@ function ProjectCard({ project }: { project: Project }) {
         </ul>
       </div>
 
-      {/* 3. Dół: Prostokąty ze skillami (zawsze na samej dole karty) */}
+      {/* 3. Dół: Technologie */}
       <div className="flex flex-col gap-2 pt-3 border-t border-slate-800/60 shrink-0">
         <span className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
           Technologies & Tools
@@ -81,6 +93,8 @@ export default function ProjectsSection() {
         'Developed an Android app retrieving live telemetry via Bluetooth ELM327 to calculate real-time engine horsepower and torque.',
       ],
       technologies: ['Kotlin', 'Android Studio', 'Bluetooth', 'ELM327', 'Real-Time Telemetry'],
+      link: 'https://github.com/pestrowicz-szymon/MobileCarDyno',
+      linkType: 'github',
     },
     {
       id: 2,
@@ -90,6 +104,8 @@ export default function ProjectsSection() {
         'Created and published a physics-based mobile game featuring upgrades, save states, and AdMob ads.',
       ],
       technologies: ['C#', 'Unity', 'Physics Engine', 'AdMob', 'Game Dev'],
+      link: 'https://play.google.com/store/apps/details?id=com.UnderTheWaterTest.com.unity.template.mobile2D',
+      linkType: 'playstore',
     },
     {
       id: 3,
@@ -100,6 +116,8 @@ export default function ProjectsSection() {
         'Implemented batch image preprocessing and custom prompt validation routines to achieve high transcription accuracy and valid syntax generation.',
       ],
       technologies: ['Python', 'Ollama', 'Qwen-Vision', 'Image Processing', 'LaTeX', 'Local LLM'],
+      link: 'https://github.com/pestrowicz-szymon/',
+      linkType: 'github',
     },
     {
       id: 4,
@@ -110,15 +128,19 @@ export default function ProjectsSection() {
         'Built Abstract Syntax Tree (AST) traversal, symbol table management, and runtime execution/evaluation modules for program validation.',
       ],
       technologies: ['Python', 'Lexical Analysis', 'Parsing', 'AST', 'Formal Languages', 'Runtime Evaluation'],
+      link: 'https://github.com/pestrowicz-szymon/Semestr-5/tree/main/J%C4%99zyki%20Formalne%20i%20Techniki%20Translacji/Lista4_vytax',
+      linkType: 'github',
     },
     {
       id: 5,
       title: 'Smart Home IoT Backend Service',
       category: 'Backend & IoT',
       description: [
-        'Designed an asynchronous RESTful backend handling IoT telemetry and Redis caching.',
+        'Designed an asynchronous RESTful backend handling IoT telemetry.',
       ],
-      technologies: ['Python', 'Django', 'REST API', 'Redis', 'SQL', 'IoT'],
+      technologies: ['Python', 'Django', 'REST API', 'SQL', 'IoT'],
+      link: 'https://github.com/pestrowicz-szymon/',
+      linkType: 'github',
     },
   ];
 
@@ -207,7 +229,7 @@ export default function ProjectsSection() {
 
       <div className="w-full flex flex-col gap-6">
         
-        {/* Nagłówek Sekcji + Stałe Przyciski Nawigacyjne */}
+        {/* Nagłówek Sekcji + Nawigacja */}
         <div className="flex items-end justify-between w-full border-b border-slate-800/80 pb-4">
           <div className="flex flex-col gap-1">
             <span className="text-teal-400 font-mono text-sm">03. Portfolio</span>
@@ -245,14 +267,13 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Kontener Karuzeli o STAŁEJ WYSOKOŚCI (h-[440px] sm:h-[380px]) */}
+        {/* Kontener Karuzeli */}
         <div 
           className="relative w-full overflow-hidden touch-pan-y h-[440px] sm:h-[380px]"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Stary projekt (wychodzący z ekranu) */}
           {prevIndex !== null && (
             <div 
               className={`absolute top-0 left-0 w-full h-full z-0 ${
@@ -263,7 +284,6 @@ export default function ProjectsSection() {
             </div>
           )}
 
-          {/* Nowy projekt (wchodzący na ekran) */}
           <div 
             key={currentIndex}
             onAnimationEnd={handleAnimationEnd}
@@ -279,7 +299,7 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Wskaźniki Kropkowe (Dots) - zakotwiczone w stałym miejscu */}
+        {/* Wskaźniki Kropkowe */}
         <div className="flex items-center justify-center gap-2 w-full pt-2">
           {projects.map((_, index) => (
             <button

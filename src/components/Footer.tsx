@@ -26,7 +26,7 @@ function Footer() {
 
             {/* LinkedIn */}
             <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/szymon-pestrowicz-507176277/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -39,9 +39,9 @@ function Footer() {
 
             {/* Email */}
             <a
-                href="mailto:twoj-email@domain.com"
+                href="mailto:pestrowicz.szymon@gmail.com"
                 aria-label="Email"
-                className="text-whitehover:text-teal-400 transition-colors"
+                className="text-white hover:text-teal-400 transition-colors"
             >
                 <svg className="w-5 h-5">
                     <use href="/icons.svg#mail-icon" />

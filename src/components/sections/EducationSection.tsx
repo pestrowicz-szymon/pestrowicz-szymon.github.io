@@ -110,11 +110,11 @@ export default function EducationSection() {
                   Bachelor's Thesis
                 </span>
                 <span className="text-xs sm:text-sm font-medium text-slate-200">
-                  “[Title of your Bachelor's Thesis]”
+                  “Determination of vehicle's engine power using acceleration measurements”
                 </span>
               </div>
               <span className="text-[10px] sm:text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded shrink-0 w-fit">
-                Software Engineering
+                Android / Kotlin / Bluetooth / Sensors
               </span>
             </div>
 
