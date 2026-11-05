@@ -9,6 +9,68 @@ interface Project {
   technologies: string[];
 }
 
+// Podkomponent karty o SZTYWNEJ WYSOKOŚCI (h-[440px] sm:h-[380px])
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <div className="p-5 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between w-full h-[440px] sm:h-[380px]">
+      
+      {/* 1. Nagłówek Karty: Stała przestrzeń na tytuł i link GitHub */}
+      <div className="flex items-start justify-between gap-4 border-b border-slate-800/60 pb-3 sm:pb-4 shrink-0 min-h-[68px] sm:min-h-[80px]">
+        <div className="flex-1">
+          <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight leading-snug">
+            {project.title}
+          </h3>
+          <p className="text-xs font-mono text-teal-400 mt-1">
+            {project.category}
+          </p>
+        </div>
+
+        <a 
+          href="https://github.com/pestrowicz-szymon" 
+          target="_blank" 
+          rel="noreferrer" 
+          className="p-2 sm:p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all shrink-0"
+          aria-label="View Source Code"
+        >
+          <svg className="w-5 h-5 fill-current">
+            <use href="/icons.svg#github-icon" />
+          </svg>
+        </a>
+      </div>
+
+      {/* 2. Środek: Opis projektu (flex-1 z wyśrodkowaniem w pionie, gdy jest 1 punkt) */}
+      <div className="flex-1 flex flex-col justify-center py-3 sm:py-4">
+        <ul className="flex flex-col gap-2 sm:gap-2.5 text-slate-300 text-xs sm:text-sm leading-relaxed">
+          {project.description.map((item, idx) => (
+            <li key={idx} className="flex items-start gap-2.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 sm:mt-2 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* 3. Dół: Prostokąty ze skillami (zawsze na samej dole karty) */}
+      <div className="flex flex-col gap-2 pt-3 border-t border-slate-800/60 shrink-0">
+        <span className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
+          Technologies & Tools
+        </span>
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+          {project.technologies.map((tech) => (
+            <span 
+              key={tech} 
+              className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50 hover:border-teal-500/30 transition-colors"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  );
+}
+
 export default function ProjectsSection() {
   const projects: Project[] = [
     {
@@ -61,19 +123,36 @@ export default function ProjectsSection() {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const [direction, setDirection] = useState<'next' | 'prev'>('next');
+  const [isAnimating, setIsAnimating] = useState(false);
+
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
-  // Nawigacja w pętli bez końca (Modulo Arithmetic)
+  const changeSlide = (newIndex: number, dir: 'next' | 'prev') => {
+    if (isAnimating || newIndex === currentIndex) return;
+    setDirection(dir);
+    setPrevIndex(currentIndex);
+    setCurrentIndex(newIndex);
+    setIsAnimating(true);
+  };
+
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    const nextIdx = (currentIndex + 1) % projects.length;
+    changeSlide(nextIdx, 'next');
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
+    const prevIdx = (currentIndex - 1 + projects.length) % projects.length;
+    changeSlide(prevIdx, 'prev');
   };
 
-  // Obsługa gestów przesunięcia palcem (Swipe)
+  const handleAnimationEnd = () => {
+    setPrevIndex(null);
+    setIsAnimating(false);
+  };
+
   const handleTouchStart = (e: TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
   };
@@ -88,38 +167,60 @@ export default function ProjectsSection() {
     const minSwipeDistance = 50;
 
     if (distance > minSwipeDistance) {
-      nextSlide(); // Przesunięcie w lewo -> następny projekt
+      nextSlide();
     } else if (distance < -minSwipeDistance) {
-      prevSlide(); // Przesunięcie w prawo -> poprzedni projekt
+      prevSlide();
     }
 
     touchStartX.current = null;
     touchEndX.current = null;
   };
 
-  const currentProject = projects[currentIndex];
-
   return (
     <section 
       id="projects" 
-      className="max-w-5xl mx-auto snap-start snap-always h-full w-full flex flex-col justify-center items-start px-6 py-12"
+      className="max-w-5xl mx-auto md:snap-start md:snap-always min-h-full shrink-0 w-full flex flex-col justify-center items-start px-4 sm:px-6 py-12"
     >
+      <style>{`
+        @keyframes slideInFromRight {
+          from { transform: translateX(100%); opacity: 0.3; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutToLeft {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(-100%); opacity: 0.3; }
+        }
+        @keyframes slideInFromLeft {
+          from { transform: translateX(-100%); opacity: 0.3; }
+          to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutToRight {
+          from { transform: translateX(0); opacity: 1; }
+          to { transform: translateX(100%); opacity: 0.3; }
+        }
+
+        .anim-slide-in-right { animation: slideInFromRight 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .anim-slide-out-left { animation: slideOutToLeft 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .anim-slide-in-left { animation: slideInFromLeft 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .anim-slide-out-right { animation: slideOutToRight 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+      `}</style>
+
       <div className="w-full flex flex-col gap-6">
         
-        {/* Nagłówek Sekcji ze Strzałkami Nawigacyjnymi */}
+        {/* Nagłówek Sekcji + Stałe Przyciski Nawigacyjne */}
         <div className="flex items-end justify-between w-full border-b border-slate-800/80 pb-4">
           <div className="flex flex-col gap-1">
             <span className="text-teal-400 font-mono text-sm">03. Portfolio</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+            <h2 className="text-2xl sm:text-4xl font-bold text-white">
               Selected Engineering Projects
             </h2>
           </div>
 
-          {/* Przyciski Nawigacyjne (Strzałki) */}
           <div className="flex items-center gap-3">
             <button
               onClick={prevSlide}
-              className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-teal-400 hover:border-teal-500/50 transition-all active:scale-95"
+              disabled={isAnimating}
+              className="p-2 sm:p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-teal-400 hover:border-teal-500/50 transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
               aria-label="Previous project"
             >
               <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -127,13 +228,14 @@ export default function ProjectsSection() {
               </svg>
             </button>
             
-            <span className="text-xs font-mono text-slate-400 min-w-[45px] text-center">
+            <span className="text-xs font-mono text-slate-400 min-w-[45px] text-center select-none">
               {currentIndex + 1} / {projects.length}
             </span>
 
             <button
               onClick={nextSlide}
-              className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-teal-400 hover:border-teal-500/50 transition-all active:scale-95"
+              disabled={isAnimating}
+              className="p-2 sm:p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-teal-400 hover:border-teal-500/50 transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
               aria-label="Next project"
             >
               <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -143,80 +245,48 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Karuzela / Obszar slajdu z obsługą gestów */}
+        {/* Kontener Karuzeli o STAŁEJ WYSOKOŚCI (h-[440px] sm:h-[380px]) */}
         <div 
-          className="w-full touch-pan-y"
+          className="relative w-full overflow-hidden touch-pan-y h-[440px] sm:h-[380px]"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Pojedyncza Karta Projektu z płynnym powiększeniem/pojawianiem */}
+          {/* Stary projekt (wychodzący z ekranu) */}
+          {prevIndex !== null && (
+            <div 
+              className={`absolute top-0 left-0 w-full h-full z-0 ${
+                direction === 'next' ? 'anim-slide-out-left' : 'anim-slide-out-right'
+              }`}
+            >
+              <ProjectCard project={projects[prevIndex]} />
+            </div>
+          )}
+
+          {/* Nowy projekt (wchodzący na ekran) */}
           <div 
-            key={currentProject.id}
-            className="p-6 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between gap-6 min-h-[360px]"
+            key={currentIndex}
+            onAnimationEnd={handleAnimationEnd}
+            className={`w-full h-full z-10 relative ${
+              isAnimating 
+                ? direction === 'next' 
+                  ? 'anim-slide-in-right' 
+                  : 'anim-slide-in-left' 
+                : ''
+            }`}
           >
-            {/* Nagłówek Karty */}
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-slate-800/60 pb-4">
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-                  {currentProject.title}
-                </h3>
-                <p className="text-xs font-mono text-teal-400 mt-1">
-                  {currentProject.category}
-                </p>
-              </div>
-
-              {/* Link do GitHuba */}
-              <a 
-                href="https://github.com/pestrowicz-szymon" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all w-fit"
-                aria-label="View Source Code"
-              >
-                <svg className="w-5 h-5 fill-current">
-                  <use href="/icons.svg#github-icon" />
-                </svg>
-              </a>
-            </div>
-
-            {/* Opis projektu (Lista punktowana) */}
-            <ul className="flex flex-col gap-2.5 text-slate-300 text-sm sm:text-base leading-relaxed">
-              {currentProject.description.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-2.5 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Prostokąciki ze skillami (Tagi/Pills) */}
-            <div className="flex flex-col gap-2 pt-2 border-t border-slate-800/60">
-              <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">
-                Technologies & Tools
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {currentProject.technologies.map((tech) => (
-                  <span 
-                    key={tech} 
-                    className="px-2.5 py-1 text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50 hover:border-teal-500/30 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-
+            <ProjectCard project={projects[currentIndex]} />
           </div>
         </div>
 
-        {/* Wskaźniki pozycji (Kropki na dole) */}
+        {/* Wskaźniki Kropkowe (Dots) - zakotwiczone w stałym miejscu */}
         <div className="flex items-center justify-center gap-2 w-full pt-2">
           {projects.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2.5 rounded-full transition-all ${
+              onClick={() => changeSlide(index, index > currentIndex ? 'next' : 'prev')}
+              disabled={isAnimating}
+              className={`h-2.5 rounded-full transition-all cursor-pointer ${
                 index === currentIndex 
                   ? 'w-8 bg-teal-400' 
                   : 'w-2.5 bg-slate-800 hover:bg-slate-700'

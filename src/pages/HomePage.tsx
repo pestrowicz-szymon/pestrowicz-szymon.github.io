@@ -6,7 +6,7 @@ import ProjectsSection from "../components/sections/ProjectsSection";
 function HomePage() {
     
   return (
-    <main className="flex-1 snap-y snap-mandatory h-full min-h-0 overflow-y-auto scroll-smooth bg-slate-950 text-slate-100">
+    <main className="flex-1 min-h-0 md:snap-y md:snap-mandatory h-full overflow-y-auto scroll-smooth bg-slate-950 text-slate-100">
       
       <HeroSection />
 

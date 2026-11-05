@@ -16,33 +16,28 @@ export default function EducationSection() {
   ];
 
   const quantumSkills = [
-    'Quantum Computing',
-    'Linear Algebra',
-    'QUBO Models',
-    'Ising Spin',
-    'QAOA Algorithm',
-    "Grover's Algorithm",
-    'Python',
+    'Quantum Computing', 'Linear Algebra', 'QUBO Models',
+    'Ising Spin', 'QAOA Algorithm', "Grover's Algorithm", 'Python',
   ];
 
   return (
     <section 
       id="education" 
-      className="max-w-5xl mx-auto snap-start snap-always h-full w-full flex flex-col justify-center items-start px-6 py-12"
+      className="max-w-5xl mx-auto md:snap-start md:snap-always min-h-full shrink-0 w-full flex flex-col justify-center items-start px-4 sm:px-6 py-12"
     >
       <div className="w-full flex flex-col gap-6">
         <div className="flex flex-col gap-1">
           <span className="text-teal-400 font-mono text-sm">01. Education</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">Education & Certifications</h2>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white">Education & Certifications</h2>
         </div>
 
-        <div className="flex flex-col gap-5 w-full">
+        <div className="flex flex-col gap-4 sm:gap-5 w-full">
           
           {/* 1. M.Sc. */}
-          <div className="p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-slate-800/60 pb-3">
+          <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                   M.Sc. in Applied Computer Science
                 </h3>
                 <p className="text-xs font-mono text-teal-400 mt-0.5">
@@ -50,7 +45,7 @@ export default function EducationSection() {
                 </p>
               </div>
               <div className="flex flex-col sm:items-end">
-                <span className="text-sm font-semibold text-slate-200">
+                <span className="text-xs sm:text-sm font-semibold text-slate-200">
                   Wrocław University of Science and Technology
                 </span>
                 <span className="text-xs font-mono text-slate-400">
@@ -59,22 +54,22 @@ export default function EducationSection() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-teal-500/10 border border-teal-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="p-3 sm:p-3.5 rounded-lg bg-teal-500/10 border border-teal-500/20 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <span className="text-xs font-mono font-semibold text-teal-400 uppercase tracking-wider block">
+                <span className="text-[10px] sm:text-xs font-mono font-semibold text-teal-400 uppercase tracking-wider block">
                   Master's Thesis
                 </span>
-                <span className="text-sm font-medium text-slate-100">
-                  “Artificial intelligence method for second-hand product valuation”
+                <span className="text-xs sm:text-sm font-medium text-slate-100">
+                  “Artificial Intelligence Methods in Used Product Valuation”
                 </span>
               </div>
-              <span className="text-xs font-mono text-teal-300/80 bg-teal-500/20 px-2 py-1 rounded shrink-0 w-fit">
+              <span className="text-[10px] sm:text-xs font-mono text-teal-300/80 bg-teal-500/20 px-2 py-0.5 rounded shrink-0 w-fit">
                 XAI / SHAP / Hybrid ML
               </span>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                 Curriculum covers advanced machine learning techniques and Explainable AI (XAI). Designing custom predictive models and analyzing feature contributions to product valuation:
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-400 font-mono mt-1">
@@ -89,10 +84,10 @@ export default function EducationSection() {
           </div>
 
           {/* 2. B.Sc. */}
-          <div className="p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-slate-800/60 pb-3">
+          <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                   B.Sc. in Algorithmic Computer Science
                 </h3>
                 <p className="text-xs font-mono text-slate-400 mt-0.5">
@@ -100,7 +95,7 @@ export default function EducationSection() {
                 </p>
               </div>
               <div className="flex flex-col sm:items-end">
-                <span className="text-sm font-semibold text-slate-200">
+                <span className="text-xs sm:text-sm font-semibold text-slate-200">
                   Wrocław University of Science and Technology
                 </span>
                 <span className="text-xs font-mono text-slate-400">
@@ -109,22 +104,22 @@ export default function EducationSection() {
               </div>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-slate-800/60 border border-slate-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="p-3 sm:p-3.5 rounded-lg bg-slate-800/60 border border-slate-700/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <span className="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider block">
+                <span className="text-[10px] sm:text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider block">
                   Bachelor's Thesis
                 </span>
-                <span className="text-sm font-medium text-slate-200">
-                  “Determination of vehicle's engine power using acceleration measurements”
+                <span className="text-xs sm:text-sm font-medium text-slate-200">
+                  “[Title of your Bachelor's Thesis]”
                 </span>
               </div>
-              <span className="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-1 rounded shrink-0 w-fit">
+              <span className="text-[10px] sm:text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded shrink-0 w-fit">
                 Software Engineering
               </span>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                 Intensive studies focused on theoretical and practical foundations of algorithms, data structures, and low-level / object-oriented programming:
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-400 font-mono mt-1">
@@ -139,10 +134,10 @@ export default function EducationSection() {
           </div>
 
           {/* 3. ARP Quantum Academy */}
-          <div className="p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-slate-800/60 pb-3">
+          <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                   ARP Quantum Academy
                 </h3>
                 <p className="text-xs font-mono text-teal-400 mt-0.5">
@@ -150,24 +145,24 @@ export default function EducationSection() {
                 </p>
               </div>
               <div className="flex flex-col sm:items-end">
-                <span className="text-sm font-semibold text-slate-200">
+                <span className="text-xs sm:text-sm font-semibold text-slate-200">
                   Wrocław Univ. of Science and Technology / ARP
                 </span>
-                <span className="text-xs font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20 mt-1">
+                <span className="text-xs font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20 mt-1 w-fit">
                   Expected Dec 2026
                 </span>
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
                 Specialized program focused on linear algebra, combinatorial optimization, and quantum algorithm implementation in Python:
               </p>
-              <div className="flex flex-wrap gap-2 mt-1">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-1">
                 {quantumSkills.map((skill, index) => (
                   <span 
                     key={index} 
-                    className="px-2.5 py-1 text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50"
+                    className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50"
                   >
                     {skill}
                   </span>
