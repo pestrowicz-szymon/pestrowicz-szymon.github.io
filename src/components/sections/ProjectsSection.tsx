@@ -71,7 +71,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.technologies.map((tech) => (
             <span 
               key={tech} 
-              className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50 hover:border-teal-500/30 transition-colors"
+              className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[11px] sm:text-xs font-mono rounded bg-slate-800 text-slate-300 border border-slate-700/50"
             >
               {tech}
             </span>

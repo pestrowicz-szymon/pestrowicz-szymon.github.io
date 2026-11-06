@@ -75,7 +75,7 @@ export default function EducationSection() {
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-400 font-mono mt-1">
                 {mscSkills.map((skill, index) => (
                   <li key={index} className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-500 shrink-0" />
                     <span>{skill}</span>
                   </li>
                 ))}

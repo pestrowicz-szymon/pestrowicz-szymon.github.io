@@ -55,7 +55,7 @@ export default function HeroSection() {
               {coreStack.map((tech) => (
                 <span 
                   key={tech} 
-                  className="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700/50 text-slate-300 text-xs font-mono hover:border-teal-500/40 hover:text-white transition-colors"
+                  className="px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700/50 text-slate-300 text-xs font-mono"
                 >
                   {tech}
                 </span>

@@ -32,11 +32,11 @@ export default function ContactSection() {
           {/* Status availability badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-mono border border-teal-500/20">
             <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
-            Open for both Engineering and Intern Roles as well as Research Projects
+            Open for Engineering Roles, Internships & R&D Projects
           </div>
 
           {/* Krótka zachęta do kontaktu */}
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl text-justify">
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl text-justify">
             Whether you have a question about my research in Explainable AI, want to discuss software development opportunities, or just want to say hi — my inbox is always open!
           </p>
 
