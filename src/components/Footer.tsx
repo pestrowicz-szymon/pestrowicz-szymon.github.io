@@ -1,4 +1,3 @@
-// src/components/Footer.tsx
 import { useState } from 'react';
 
 export default function Footer() {
@@ -15,12 +14,10 @@ export default function Footer() {
     <footer className="w-full bg-slate-950 border-t border-slate-900/80 px-4 sm:px-6 py-3 sm:py-6 shrink-0">
       <div className="max-w-5xl mx-auto flex items-center justify-between gap-4 text-xs font-mono text-slate-400">
         
-        {/* Copyright */}
         <span className="text-[11px] sm:text-xs text-slate-400">
           © 2026 Szymon Pestrowicz
         </span>
 
-        {/* Pełny widget z mailem i przyciskiem kopiowania (tylko od sm:) */}
         <div className="hidden sm:flex items-center gap-2.5 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800/80 hover:border-slate-700 transition-colors">
           <a
             href={`mailto:${email}`}
@@ -47,7 +44,6 @@ export default function Footer() {
           </button>
         </div>
 
-        {/* Ikony społecznościowe w jednym rzędzie po prawej stronie */}
         <div className="flex items-center gap-3 sm:gap-4">
           <a 
             href="https://github.com/pestrowicz-szymon" 
@@ -61,7 +57,7 @@ export default function Footer() {
             </svg>
           </a>
           <a 
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/szymon-pestrowicz-507176277/" 
             target="_blank" 
             rel="noreferrer"
             className="hover:text-teal-400 transition-colors p-1"
@@ -71,7 +67,6 @@ export default function Footer() {
               <use href="/icons.svg#linkedin-icon" />
             </svg>
           </a>
-          {/* Na mobilkach wyświetla się zwięzła ikona koperty zamiast długiego paska z adresem */}
           <a 
             href={`mailto:${email}`}
             className="sm:hidden hover:text-teal-400 transition-colors p-1"

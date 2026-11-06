@@ -1,6 +1,8 @@
-// src/components/sections/HeroSection.tsx
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function HeroSection() {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+  
   const coreStack = [
     'Java', 
     'Python', 
@@ -18,18 +20,15 @@ export default function HeroSection() {
       id="about" 
       className="max-w-5xl mx-auto md:snap-start md:snap-always min-h-full shrink-0 w-full flex flex-col justify-center items-start px-4 sm:px-6 py-12"
     >
-      <div className="w-full flex flex-col gap-6">
+      <div ref={revealRef} className="reveal-on-scroll w-full flex flex-col gap-6">
         
-        {/* Nagłówek Sekcji w stylu pozostałych podstron */}
         <div className="flex flex-col gap-1">
           <span className="text-teal-400 font-mono text-sm">00. About Me</span>
           <h2 className="text-2xl sm:text-4xl font-bold text-white">Engineering Profile</h2>
         </div>
 
-        {/* Główny kontener-prostokąt o pełnej szerokości max-w-5xl */}
         <div className="p-6 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-6 w-full">
           
-          {/* Badge i Tytuł */}
           <div className="flex flex-col gap-3 border-b border-slate-800/60 pb-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-mono border border-teal-500/20 w-fit">
               <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
@@ -41,12 +40,10 @@ export default function HeroSection() {
             </h1>
           </div>
 
-          {/* Opis z CV */}
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
             Software Engineer with nearly <strong className="text-white">3 years of commercial enterprise experience</strong> in backend development, API integration, database optimization, and process automation. Currently pursuing an M.Sc. in Applied Computer Science focusing on <strong className="text-white">Machine Learning (Explainable AI / SHAP)</strong> alongside research in <strong className="text-white">Quantum Technologies</strong>.
           </p>
 
-          {/* Tagi technologiczne w kafelkach */}
           <div className="flex flex-col gap-2.5 pt-2 border-t border-slate-800/60">
             <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">
               Core Tech & Focus Areas
@@ -63,7 +60,6 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Przyciski Akcji */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
             <a 
               href="#projects" 

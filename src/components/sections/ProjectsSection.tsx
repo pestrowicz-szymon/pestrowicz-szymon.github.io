@@ -1,6 +1,6 @@
-// src/components/sections/ProjectsSection.tsx
 import { useState, useRef } from 'react';
 import type { TouchEvent } from 'react';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 interface Project {
   id: number;
@@ -16,7 +16,6 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="p-5 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between w-full h-[440px] sm:h-[380px]">
       
-      {/* Nagłówek Karty */}
       <div className="flex items-start justify-between gap-4 border-b border-slate-800/60 pb-3 sm:pb-4 shrink-0 min-h-[68px] sm:min-h-[80px]">
         <div className="flex-1">
           <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight leading-snug">
@@ -27,7 +26,6 @@ function ProjectCard({ project }: { project: Project }) {
           </p>
         </div>
 
-        {/* Ikona renderuje się TYLKO gdy podano link */}
         {project.link && (
           <a 
             href={project.link} 
@@ -38,11 +36,11 @@ function ProjectCard({ project }: { project: Project }) {
             title={project.linkType === 'playstore' ? 'View on Google Play Store' : 'View Source Code'}
           >
             {project.linkType === 'playstore' ? (
-              <svg className="w-5 h-5 fill-none stroke-current stroke-2 text-white" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             ) : (
-              <svg className="w-5 h-5 fill-current text-white">
+              <svg className="w-5 h-5 fill-current">
                 <use href="/icons.svg#github-icon" />
               </svg>
             )}
@@ -50,7 +48,6 @@ function ProjectCard({ project }: { project: Project }) {
         )}
       </div>
 
-      {/* Środek: Opis projektu */}
       <div className="flex-1 flex flex-col justify-center py-3 sm:py-4">
         <ul className="flex flex-col gap-2 sm:gap-2.5 text-slate-300 text-xs sm:text-sm leading-relaxed">
           {project.description.map((item, idx) => (
@@ -62,7 +59,6 @@ function ProjectCard({ project }: { project: Project }) {
         </ul>
       </div>
 
-      {/* Dół: Technologie */}
       <div className="flex flex-col gap-2 pt-3 border-t border-slate-800/60 shrink-0">
         <span className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
           Technologies & Tools
@@ -84,6 +80,8 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export default function ProjectsSection() {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
   const projects: Project[] = [
     {
       id: 1,
@@ -225,7 +223,7 @@ export default function ProjectsSection() {
         .anim-slide-out-right { animation: slideOutToRight 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards; }
       `}</style>
 
-      <div className="w-full flex flex-col gap-6">
+      <div ref={revealRef} className="reveal-on-scroll w-full flex flex-col gap-6">
         
         {/* Nagłówek Sekcji wyśrodkowany z przyciskami po prawej stronie */}
         <div className="relative w-full border-b border-slate-800/80 pb-4 flex flex-col sm:flex-row items-center justify-center">
@@ -297,7 +295,6 @@ export default function ProjectsSection() {
           </div>
         </div>
 
-        {/* Wskaźniki Kropkowe */}
         <div className="flex items-center justify-center gap-2 w-full pt-2">
           {projects.map((_, index) => (
             <button

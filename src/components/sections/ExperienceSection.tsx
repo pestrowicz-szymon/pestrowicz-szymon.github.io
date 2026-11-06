@@ -1,12 +1,14 @@
-// src/components/sections/ExperienceSection.tsx
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function ExperienceSection() {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+
   return (
     <section 
       id="experience" 
       className="max-w-5xl mx-auto md:snap-start md:snap-always min-h-full shrink-0 w-full flex flex-col justify-center items-start px-4 sm:px-6 py-12"
     >
-      <div className="w-full flex flex-col gap-6">
+      <div ref={revealRef} className="reveal-on-scroll w-full flex flex-col gap-6">
         
         <div className="flex flex-col gap-1">
           <span className="text-teal-400 font-mono text-sm">02. Experience</span>
@@ -15,7 +17,6 @@ export default function ExperienceSection() {
 
         <div className="flex flex-col gap-4 w-full">
           
-          {/* 1. Junior Power Apps / Backend Developer */}
           <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>
@@ -58,7 +59,6 @@ export default function ExperienceSection() {
             </ul>
           </div>
 
-          {/* 2. Junior Digital Transformation Specialist */}
           <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>
@@ -107,7 +107,6 @@ export default function ExperienceSection() {
             </ul>
           </div>
 
-          {/* 3. Digital Process Transformation Intern */}
           <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>
@@ -144,7 +143,6 @@ export default function ExperienceSection() {
             </ul>
           </div>
 
-          {/* 4. Mathematics & Computer Science Tutor */}
           <div className="p-4 sm:p-6 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col gap-3 sm:gap-4">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-2 border-b border-slate-800/60 pb-3">
               <div>

@@ -1,6 +1,8 @@
-// src/components/sections/EducationSection.tsx
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function EducationSection() {
+  const revealRef = useScrollReveal<HTMLDivElement>();
+  
   const mscSkills = [
     'Machine Learning & Deep Learning',
     'Explainable AI (XAI / SHAP / LIME)',
@@ -25,7 +27,7 @@ export default function EducationSection() {
       id="education" 
       className="max-w-5xl mx-auto md:snap-start md:snap-always min-h-full shrink-0 w-full flex flex-col justify-center items-start px-4 sm:px-6 py-12"
     >
-      <div className="w-full flex flex-col gap-6">
+      <div ref={revealRef} className="reveal-on-scroll w-full flex flex-col gap-6">
         <div className="flex flex-col gap-1">
           <span className="text-teal-400 font-mono text-sm">01. Education</span>
           <h2 className="text-2xl sm:text-4xl font-bold text-white">Education & Certifications</h2>

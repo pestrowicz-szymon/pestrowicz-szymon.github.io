@@ -1,7 +1,8 @@
-// src/components/sections/ContactSection.tsx
 import { useState } from 'react';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 export default function ContactSection() {
+  const revealRef = useScrollReveal<HTMLDivElement>();
   const [copied, setCopied] = useState(false);
   const email = 'pestrowicz.szymon@gmail.com';
 
@@ -16,9 +17,8 @@ export default function ContactSection() {
       id="contact" 
       className="max-w-5xl mx-auto md:snap-start md:snap-always min-h-full shrink-0 w-full flex flex-col justify-center items-start px-4 sm:px-6 py-12"
     >
-      <div className="w-full flex flex-col gap-6">
+      <div ref={revealRef} className="reveal-on-scroll w-full flex flex-col gap-6">
         
-        {/* Wyśrodkowany Nagłówek Sekcji */}
         <div className="flex flex-col items-center gap-1 text-center w-full border-b border-slate-800/80 pb-4">
           <span className="text-teal-400 font-mono text-sm">04. What's Next?</span>
           <h2 className="text-2xl sm:text-4xl font-bold text-white">
@@ -26,24 +26,19 @@ export default function ContactSection() {
           </h2>
         </div>
 
-        {/* Główna Karta Kontaktowa */}
         <div className="p-6 sm:p-10 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col items-center text-center gap-6 w-full">
           
-          {/* Status availability badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 text-teal-400 text-xs font-mono border border-teal-500/20">
             <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
             Open for Engineering Roles, Internships & R&D Projects
           </div>
 
-          {/* Krótka zachęta do kontaktu */}
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl text-justify">
             Whether you have a question about my research in Explainable AI, want to discuss software development opportunities, or just want to say hi — my inbox is always open!
           </p>
 
-          {/* Główny przycisk email z obsługą kopiowania */}
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto pt-2">
             
-            {/* Przycisk wysłania maila */}
             <a
               href={`mailto:${email}`}
               className="w-full sm:w-auto px-6 py-3 rounded-lg bg-teal-500 text-slate-950 font-semibold text-sm hover:bg-teal-400 transition-colors flex items-center justify-center gap-2"
@@ -54,7 +49,6 @@ export default function ContactSection() {
               Send Message
             </a>
 
-            {/* Przycisk kopiowania adresu */}
             <button
               onClick={handleCopyEmail}
               className="w-full sm:w-auto px-5 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs hover:border-teal-500/40 hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer"
@@ -70,10 +64,8 @@ export default function ContactSection() {
             </button>
           </div>
 
-          {/* Kafelki Social Media & Lokalizacja */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full pt-4 border-t border-slate-800/60 mt-2">
             
-            {/* GitHub Card */}
             <a
               href="https://github.com/pestrowicz-szymon"
               target="_blank"
@@ -81,7 +73,7 @@ export default function ContactSection() {
               className="p-3.5 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:border-teal-500/30 hover:bg-slate-800 transition-all flex items-center justify-between group"
             >
               <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-white group-hover:text-teal-400 transition-colors">
+                <svg className="w-5 h-5 group-hover:text-teal-400 transition-colors">
                   <use href="/icons.svg#github-icon" />
                 </svg>
                 <div className="text-left">
@@ -92,15 +84,14 @@ export default function ContactSection() {
               <span className="text-slate-500 group-hover:text-teal-400 text-xs transition-colors">→</span>
             </a>
 
-            {/* LinkedIn Card */}
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/szymon-pestrowicz-507176277/"
               target="_blank"
               rel="noreferrer"
               className="p-3.5 rounded-lg bg-slate-800/50 border border-slate-700/50 hover:border-teal-500/30 hover:bg-slate-800 transition-all flex items-center justify-between group"
             >
               <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-white group-hover:text-teal-400 transition-colors">
+                <svg className="w-5 h-5 group-hover:text-teal-400 transition-colors">
                   <use href="/icons.svg#linkedin-icon" />
                 </svg>
                 <div className="text-left">
@@ -111,7 +102,6 @@ export default function ContactSection() {
               <span className="text-slate-500 group-hover:text-teal-400 text-xs transition-colors">→</span>
             </a>
 
-            {/* Location Card */}
             <div className="p-3.5 rounded-lg bg-slate-800/50 border border-slate-700/50 flex items-center gap-3">
               <span className="text-lg">📍</span>
               <div className="text-left">
