@@ -2,6 +2,7 @@ import HeroSection from "../components/sections/HeroSection";
 import EducationSection from "../components/sections/EducationSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
+import ContactSection from "../components/sections/ContactSection";
 
 function HomePage() {
     
@@ -15,6 +16,8 @@ function HomePage() {
       <ExperienceSection />
 
       <ProjectsSection />
+
+      <ContactSection />
 
     </main>
   )

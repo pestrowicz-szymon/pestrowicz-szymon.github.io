@@ -42,7 +42,7 @@ export default function HeroSection() {
           </div>
 
           {/* Opis z CV */}
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 leading-relaxed text-justify">
             Software Engineer with nearly <strong className="text-white">3 years of commercial enterprise experience</strong> in backend development, API integration, database optimization, and process automation. Currently pursuing an M.Sc. in Applied Computer Science focusing on <strong className="text-white">Machine Learning (Explainable AI / SHAP)</strong> alongside research in <strong className="text-white">Quantum Technologies</strong>.
           </p>
 

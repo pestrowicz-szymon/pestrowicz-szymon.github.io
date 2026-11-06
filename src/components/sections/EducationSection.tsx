@@ -90,7 +90,7 @@ export default function EducationSection() {
                 <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                   B.Sc. in Algorithmic Computer Science
                 </h3>
-                <p className="text-xs font-mono text-slate-400 mt-0.5">
+                <p className="text-xs font-mono text-teal-400 mt-0.5">
                   Bachelor of Science • Algorithmic Computer Science
                 </p>
               </div>
@@ -146,10 +146,10 @@ export default function EducationSection() {
               </div>
               <div className="flex flex-col sm:items-end">
                 <span className="text-xs sm:text-sm font-semibold text-slate-200">
-                  Wrocław Univ. of Science and Technology / ARP
+                  Wrocław University of Science and Technology / ARP
                 </span>
-                <span className="text-xs font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20 mt-1 w-fit">
-                  Expected Dec 2026
+                <span className="text-xs font-mono text-slate-400">
+                  Nov 2026 – Dec 2026
                 </span>
               </div>
             </div>

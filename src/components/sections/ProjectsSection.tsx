@@ -1,3 +1,4 @@
+// src/components/sections/ProjectsSection.tsx
 import { useState, useRef } from 'react';
 import type { TouchEvent } from 'react';
 
@@ -7,16 +8,15 @@ interface Project {
   category: string;
   description: string[];
   technologies: string[];
-  link: string;
+  link?: string;
   linkType?: 'github' | 'playstore' | 'external';
 }
 
-// Podkomponent karty o sztywnej wysokości z dynamicznym linkiem
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="p-5 sm:p-8 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between w-full h-[440px] sm:h-[380px]">
       
-      {/* 1. Nagłówek Karty: Tytuł oraz dedykowany przycisk z linkiem */}
+      {/* Nagłówek Karty */}
       <div className="flex items-start justify-between gap-4 border-b border-slate-800/60 pb-3 sm:pb-4 shrink-0 min-h-[68px] sm:min-h-[80px]">
         <div className="flex-1">
           <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight leading-snug">
@@ -27,30 +27,30 @@ function ProjectCard({ project }: { project: Project }) {
           </p>
         </div>
 
-        {/* Dedykowane łącze dla konkretnego projektu */}
-        <a 
-          href={project.link} 
-          target="_blank" 
-          rel="noreferrer" 
-          className="p-2 sm:p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all shrink-0 flex items-center justify-center"
-          aria-label={`Open ${project.title}`}
-          title={project.linkType === 'playstore' ? 'View on Google Play Store' : 'View Source Code'}
-        >
-          {project.linkType === 'playstore' ? (
-            /* Ikona Google Play Store / External */
-            <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          ) : (
-            /* Ikona GitHub */
-            <svg className="w-5 h-5 fill-current">
-              <use href="/icons.svg#github-icon" />
-            </svg>
-          )}
-        </a>
+        {/* Ikona renderuje się TYLKO gdy podano link */}
+        {project.link && (
+          <a 
+            href={project.link} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="p-2 sm:p-2.5 rounded-lg bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-teal-400 hover:border-teal-500/40 transition-all shrink-0 flex items-center justify-center"
+            aria-label={`Open ${project.title}`}
+            title={project.linkType === 'playstore' ? 'View on Google Play Store' : 'View Source Code'}
+          >
+            {project.linkType === 'playstore' ? (
+              <svg className="w-5 h-5 fill-none stroke-current stroke-2 text-white" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5 fill-current text-white">
+                <use href="/icons.svg#github-icon" />
+              </svg>
+            )}
+          </a>
+        )}
       </div>
 
-      {/* 2. Środek: Opis projektu */}
+      {/* Środek: Opis projektu */}
       <div className="flex-1 flex flex-col justify-center py-3 sm:py-4">
         <ul className="flex flex-col gap-2 sm:gap-2.5 text-slate-300 text-xs sm:text-sm leading-relaxed">
           {project.description.map((item, idx) => (
@@ -62,7 +62,7 @@ function ProjectCard({ project }: { project: Project }) {
         </ul>
       </div>
 
-      {/* 3. Dół: Technologie */}
+      {/* Dół: Technologie */}
       <div className="flex flex-col gap-2 pt-3 border-t border-slate-800/60 shrink-0">
         <span className="text-[10px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider">
           Technologies & Tools
@@ -116,8 +116,6 @@ export default function ProjectsSection() {
         'Implemented batch image preprocessing and custom prompt validation routines to achieve high transcription accuracy and valid syntax generation.',
       ],
       technologies: ['Python', 'Ollama', 'Qwen-Vision', 'Image Processing', 'LaTeX', 'Local LLM'],
-      link: 'https://github.com/pestrowicz-szymon/',
-      linkType: 'github',
     },
     {
       id: 4,
@@ -139,7 +137,7 @@ export default function ProjectsSection() {
         'Designed an asynchronous RESTful backend handling IoT telemetry.',
       ],
       technologies: ['Python', 'Django', 'REST API', 'SQL', 'IoT'],
-      link: 'https://github.com/pestrowicz-szymon/',
+      link: 'https://github.com/pestrowicz-szymon/Projekt_Smart_Home',
       linkType: 'github',
     },
   ];
@@ -229,16 +227,16 @@ export default function ProjectsSection() {
 
       <div className="w-full flex flex-col gap-6">
         
-        {/* Nagłówek Sekcji + Nawigacja */}
-        <div className="flex items-end justify-between w-full border-b border-slate-800/80 pb-4">
-          <div className="flex flex-col gap-1">
+        {/* Nagłówek Sekcji wyśrodkowany z przyciskami po prawej stronie */}
+        <div className="relative w-full border-b border-slate-800/80 pb-4 flex flex-col sm:flex-row items-center justify-center">
+          <div className="flex flex-col items-center gap-1 text-center">
             <span className="text-teal-400 font-mono text-sm">03. Portfolio</span>
             <h2 className="text-2xl sm:text-4xl font-bold text-white">
               Selected Engineering Projects
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="sm:absolute sm:right-0 mt-3 sm:mt-0 flex items-center gap-3">
             <button
               onClick={prevSlide}
               disabled={isAnimating}

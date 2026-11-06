@@ -9,6 +9,7 @@ export default function Navbar() {
     { label: 'Education', href: '#education' },
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (

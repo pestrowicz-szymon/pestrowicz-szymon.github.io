@@ -22,7 +22,7 @@ export default function ExperienceSection() {
                 <h3 className="text-lg sm:text-2xl font-bold text-white tracking-tight">
                   Junior Power Apps / Backend Developer
                 </h3>
-                <p className="text-xs font-mono text-teal-400 mt-0.5">
+                <p className="text-xs font-mono text-slate-400 mt-0.5">
                   B/S/H/ (BSH Home Appliances Group)
                 </p>
               </div>
@@ -30,27 +30,27 @@ export default function ExperienceSection() {
                 <span className="text-xs sm:text-sm font-semibold text-slate-200">
                   B/S/H/
                 </span>
-                <span className="text-xs font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded border border-teal-500/20 mt-1 w-fit">
+                <span className="text-xs font-mono text-slate-400 mt-1">
                   Dec 2025 – Apr 2026
                 </span>
               </div>
             </div>
 
-            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
                 <span>
                   Engineered and deployed a multi-plant crisis contact application used across <strong>5 manufacturing plants</strong> in Poland, tracking employee responses and enforcing strict labor law compliance for hundreds of shift coordinators.
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
                 <span>
                   Designed global non-production purchasing tracking software (<strong>"iProject"</strong>) utilized by <strong>120+ international stakeholders</strong>, implementing automated lifecycle stage notifications and savings tracking.
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-1.5 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
                 <span>
                   Integrated custom backend services with external enterprise systems via REST APIs, handling complex JSON parsing, data validation, and asynchronous logic.
                 </span>
@@ -79,7 +79,7 @@ export default function ExperienceSection() {
               </div>
             </div>
 
-            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
                 <span>
@@ -128,7 +128,7 @@ export default function ExperienceSection() {
               </div>
             </div>
 
-            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
                 <span>
@@ -165,7 +165,7 @@ export default function ExperienceSection() {
               </div>
             </div>
 
-            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <ul className="flex flex-col gap-2 text-xs sm:text-sm text-slate-300 leading-relaxed text-justify">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-500 mt-1.5 shrink-0" />
                 <span>
