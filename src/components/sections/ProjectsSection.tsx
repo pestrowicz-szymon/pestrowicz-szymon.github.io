@@ -140,13 +140,13 @@ export default function ProjectsSection() {
     },
     {
       id: 6,
-      title: 'Multithreaded Checkers Application',
-      category: 'Java & Concurrency',
+      title: 'Multithreaded Client-Server Checkers',
+      category: 'Java & Client-Server Architecture',
       description: [
-        'Developed a multithreaded Checkers game in Java featuring concurrent turn processing, move validation, and synchronized board state management.',
-        'Implemented thread-safe communication and modular object-oriented architecture to ensure conflict-free execution and responsive gameplay.',
+        'Built a two-player client-server Checkers application in Java 19 using JavaFX and FXGL for the graphical interface and game board rendering.',
+        'Implemented multithreaded session handling, MariaDB persistence via JDBC, password hashing with jBCrypt, and unit tests in JUnit 5.',
       ],
-      technologies: ['Java', 'Multithreading', 'Concurrency', 'Thread Synchronization', 'OOP', 'Git'],
+      technologies: ['Java 19', 'JavaFX', 'FXGL', 'Multithreading', 'MariaDB / JDBC', 'jBCrypt', 'JUnit 5', 'Maven'],
       link: 'https://github.com/pawles-st/checkers',
       linkType: 'github',
     },
