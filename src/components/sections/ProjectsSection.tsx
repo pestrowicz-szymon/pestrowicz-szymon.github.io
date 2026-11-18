@@ -138,6 +138,18 @@ export default function ProjectsSection() {
       link: 'https://github.com/pestrowicz-szymon/Projekt_Smart_Home',
       linkType: 'github',
     },
+    {
+      id: 6,
+      title: 'Multithreaded Checkers Application',
+      category: 'Java & Concurrency',
+      description: [
+        'Developed a multithreaded Checkers game in Java featuring concurrent turn processing, move validation, and synchronized board state management.',
+        'Implemented thread-safe communication and modular object-oriented architecture to ensure conflict-free execution and responsive gameplay.',
+      ],
+      technologies: ['Java', 'Multithreading', 'Concurrency', 'Thread Synchronization', 'OOP', 'Git'],
+      link: 'https://github.com/pawles-st/checkers',
+      linkType: 'github',
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
